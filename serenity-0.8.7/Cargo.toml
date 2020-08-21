@@ -1,0 +1,158 @@
+[package]
+authors = ["alex <acdenissk69@gmail.com>", "Zeyla Hellyer <hi@zeyla.me>"]
+description = "A Rust library for the Discord API."
+documentation = "https://docs.rs/serenity"
+homepage = "https://github.com/serenity-rs/serenity"
+keywords = ["discord", "api"]
+license = "ISC"
+name = "serenity"
+readme = "README.md"
+repository = "https://github.com/serenity-rs/serenity.git"
+version = "0.8.7"
+edition = "2018"
+
+[dependencies]
+bitflags = "1"
+log = "0.4"
+parking_lot = "0.11"
+serde_json = "1"
+
+[dependencies.static_assertions]
+optional = true
+version = "1.1"
+
+[dependencies.audiopus]
+optional = true
+version = "0.1"
+
+[dependencies.command_attr]
+path = "./command_attr"
+version = "0.2.0"
+optional = true
+
+[dependencies.serde]
+version = "1"
+features = ["derive"]
+
+[dependencies.uwl]
+optional = true
+version = "0.6.0"
+
+[dependencies.base64]
+optional = true
+version = "0.12"
+
+[dependencies.byteorder]
+optional = true
+version = "1"
+
+[dependencies.chrono]
+features = ["serde"]
+version = "0.4"
+
+[dependencies.flate2]
+optional = true
+version = "1"
+
+[dependencies.reqwest]
+default-features = false
+features = ["blocking", "json"]
+optional = true
+version = "0.10"
+
+[dependencies.rand]
+optional = true
+version = "0.7"
+
+[dependencies.rustls]
+optional = true
+version = "0.17"
+
+[dependencies.threadpool]
+optional = true
+version = "1"
+
+[dependencies.tungstenite]
+default-features = false
+optional = true
+version = "0.11"
+
+[dependencies.typemap]
+optional = true
+version = "0.3"
+
+[dependencies.url]
+optional = true
+version = "^2.1"
+
+[dependencies.webpki]
+optional = true
+version = "0.21"
+
+[dependencies.webpki-roots]
+optional = true
+version = "0.19"
+
+[dependencies.xsalsa20poly1305]
+optional = true
+version = "0.4.2"
+
+[dev-dependencies.http_crate]
+version = "0.2"
+package = "http"
+
+[dev-dependencies.matches]
+version = "0.1"
+
+[features]
+default = [
+    "builder",
+    "cache",
+    "client",
+    "framework",
+    "gateway",
+    "model",
+    "http",
+    "standard_framework",
+    "utils",
+    "rustls_backend",
+]
+default_native_tls = [
+    "builder",
+    "cache",
+    "client",
+    "framework",
+    "gateway",
+    "model",
+    "http",
+    "standard_framework",
+    "utils",
+    "native_tls_backend",
+]
+builder = ["utils"]
+cache = []
+client = [
+    "gateway",
+    "http",
+    "threadpool",
+    "typemap",
+]
+extras = []
+framework = ["client", "model", "utils"]
+gateway = [
+    "flate2",
+    "http",
+    "url",
+    "utils",
+]
+http = ["url"]
+absolute_ratelimits = ["http"]
+rustls_backend = ["reqwest/rustls-tls", "tungstenite", "rustls", "webpki", "webpki-roots"]
+native_tls_backend = ["reqwest/native-tls", "tungstenite/tls"]
+model = ["builder", "http"]
+standard_framework = ["framework", "uwl", "command_attr", "static_assertions"]
+utils = ["base64"]
+voice = ["byteorder", "gateway", "audiopus", "rand", "xsalsa20poly1305"]
+
+[package.metadata.docs.rs]
+all-features = true

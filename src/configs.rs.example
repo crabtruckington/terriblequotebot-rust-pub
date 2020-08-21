@@ -1,0 +1,5 @@
+//CONFIGS
+//fill out your values, and then rename to configs.rs before building
+pub const DISCORDTOKEN: &'static str = "";
+pub const DISCORDPREFIX: &'static str ="!";
+pub const POSTGRESCONNSTRING: &'static str = "host=xxx user=xxx password=xxx dbname=quotes";
